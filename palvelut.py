@@ -7,6 +7,25 @@ class Asiakas:
     __asiakasnro: List[int]
     __ika: int
 
+    """Luokka, joka ottaa kaikki tavikeet käytäjältä.
+
+    :ivar __nimi: asikkaan nimi, arvotaan
+    :type __nimi: str
+    :ivar __ika: asikkaan ikä, arvotaan
+    :type __ika: int
+
+    Julkiset metodit:
+        nimi()
+        ika()
+        asiakasnro()
+
+    suojatut metodit:
+        _randfixed_digit(int)
+
+    yksityiset metodit:
+        __luo_nro(int)
+    """    
+
     def __init__(self, nimi, ika) -> None:
         self.__nimi = nimi
         self.__ika = ika
@@ -54,6 +73,22 @@ class Palvelu():
     tuotenimi: str
     __asiakkaat: List[Asiakas]
 
+    """Luokka, joka tulostaa asikkaan tiedot.
+
+    :ivar tuotenimi: tuotenimi, arvotaan
+    :type tuotenimi: str
+    :ivar __asiakkaat: asiakkaiden nimet, ottaa kaikki asiakkaiden nimet.
+    :type __asiakkaat: str
+
+    Julkiset metodit:
+        lisaa_asiakas()
+        poista_asiakas()
+        tulosta_asiakkaat()
+
+    suojatut metodit:
+        _luo_asiakarivi(str)
+    """    
+
     def __init__(self, tuotenimi: str):
         self.tuotenimi = tuotenimi
         self.__asiakkaat = []
@@ -84,6 +119,19 @@ class Palvelu():
 
 class ParempiPalvelu(Palvelu):
     __edut: List[str]
+
+    """Luokka, joka toteuttaa edut.
+
+    :ivar tuotenimi: tuotenimi, arvotaan
+    :type tuotenimi: str
+    :ivar __edut: asikkaan edu
+    :type __edut: str
+
+    Julkiset metodit:
+        lisaa_etu(str)
+        poista_etu(str)
+        tulosta_edut()
+    """ 
 
     def __init__(self, tuotenimi):
         super(ParempiPalvelu, self).__init__(tuotenimi)
