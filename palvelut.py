@@ -27,16 +27,30 @@ class Asiakas:
     """    
 
     def __init__(self, nimi, ika) -> None:
+        """Konstruktori"""
+
         self.__nimi = nimi
         self.__ika = ika
         self.__luo_nro()
 
     @property
     def nimi(self):
+        """Palauttaa nimi.
+
+        :return: nimi
+        :rtype: str
+        """
         return self.__nimi
 
     @nimi.setter
     def nimi(self, nimi: str):
+        """Palauttaa nimi.
+
+        :param nimi: nimi
+        :type nimi: str
+        :return: nimi
+        :rtype: str
+        """
         if(nimi):
             self.__nimi = nimi
         else:
@@ -44,10 +58,24 @@ class Asiakas:
 
     @property
     def ika(self):
+        """Palauttaa ikä.
+
+        :param ika: ikä
+        :type ika: int
+        :return: ikä
+        :rtype: int
+        """
         return self.__ika
 
     @ika.setter
     def ika(self, ika: int):
+        """Palauttaa ikä.
+
+        :param ika: ikä
+        :type ika: int
+        :return: ikä
+        :rtype: int
+        """
         if(ika):
             self.__ika = ika
         else:
@@ -55,6 +83,11 @@ class Asiakas:
 
     @property
     def asiakasnro(self):
+        """Palauttaa asikasnumero.
+
+        :return: asikasnumero
+        :rtype: str
+        """
         return f"{str(self.__asiakasnro[0:2])}-{self.__asiakasnro[2:5]}-{self.__asiakasnro[5:9]}"
 
     @asiakasnro.setter
@@ -62,9 +95,21 @@ class Asiakas:
         self.__asiakasnro = asiaksnro
 
     def _randfixed_digit(self, digits):
+        """Palauttaa satunnaisen asikasnumero.
+
+        :param digits: digits näyttää, kuninka monta kertaa pitää toistaa
+        :type digits: int
+        :return: asikasnumero
+        :rtype: str
+        """
         return ''.join(["{}".format(random.randint(0, 9)) for num in range(0, digits)])
 
     def __luo_nro(self):
+        """sijoittaa kaikki numerot oikeaan paikkaan.
+
+        :return: asikasnumero
+        :rtype: str
+        """
         self.__asiakasnro = [self._randfixed_digit(
             2), self._randfixed_digit(3), self._randfixed_digit(3)]
 
@@ -90,13 +135,24 @@ class Palvelu():
     """    
 
     def __init__(self, tuotenimi: str):
+        """Konstruktori"""
         self.tuotenimi = tuotenimi
         self.__asiakkaat = []
 
     def _luo_asiakarivi(self, asiakas: Asiakas) -> str:
+        """rakentaa asikas tiedot 
+
+        :return: asikas tiedot
+        :rtype: str
+        """
         return f"{asiakas.nimi} ({asiakas.asiakasnro}) on {asiakas.ika}-vuotias."
 
     def lisaa_asiakas(self, asiakas: Asiakas):
+        """lisää asikas __asikkaat listaan
+
+        :return: asikas class:in asikaat nimet
+        :rtype: str
+        """
         if(asiakas):
             self.__asiakkaat.append(asiakas)
 
@@ -104,6 +160,11 @@ class Palvelu():
             raise Exception("Oho, tuli jotain vihe!\nAntaa Asiakas.")
 
     def poista_asiakas(self, asiakas: Asiakas):
+        """poitaa asikas __asikkaat listasta
+
+        :return: poistaa asikas
+        :rtype: str
+        """
         try:
             self.__asiakkaat.remove(asiakas)
         except:
@@ -111,6 +172,11 @@ class Palvelu():
             pass
 
     def tulosta_asiakkaat(self):
+        """tulostaa asikas tiedot.
+
+        :return: asikaat tiedot
+        :rtype: str
+        """
         print(f"Tuotteen {self.__asiakkaat[-1]} asiakkaat ovat:")
         print(self._luo_asiakarivi)
         
@@ -134,16 +200,27 @@ class ParempiPalvelu(Palvelu):
     """ 
 
     def __init__(self, tuotenimi):
+        """Konstruktori"""
         super(ParempiPalvelu, self).__init__(tuotenimi)
         self.__edut = []
 
     def lisaa_etu(self, b: str):
+        """lisää edut __edut listaan
+
+        :return: asikas Edut
+        :rtype: str
+        """
         if(b):
             self.__edut.append(b)
         else:
             raise Exception("Oho, tuli jotain vihe!\nAntaa edu.")
 
     def poista_etu(self, b: str):
+        """poistaa edut __edut listaan
+
+        :return: asikas Edut
+        :rtype: str
+        """
         try:
             self.__edut.remove(b)
         except:
@@ -151,5 +228,11 @@ class ParempiPalvelu(Palvelu):
             pass
 
     def tulosta_edut(self):
+        """tulostaa asiakkaan ostokset tiedot.
+
+        :return: asikaat tiedot
+        :rtype: str
+        """
+
         print(f"Tuotteen {self.__asiakkaat} edut ovat:")
         print(f"Jauhaa {self.__edut}.")
