@@ -116,25 +116,40 @@ class Palvelu(Asiakas):
       print(self._luo_asiakasrivi(Asiakas))
   
 class ParempiPalvelu(Palvelu):
-  
+  """Luokka, joka toteuttaa edut.
+
+    :ivar tuotenimi: tuotenimi, arvotaan
+    :type tuotenimi: str
+    :ivar __edut: asikkaan edu
+    :type __edut: str
+
+    Julkiset metodit:
+      lisaa_etu(str)
+      poista_etu(str)
+      tulosta_edut()
+    """
   def __init__(self, tuotenimi):
     """Konstruktori"""
     super(ParempiPalvelu, self).__init__(tuotenimi)
     self.__edut = []
   
   def lisaa_etu(self, etu):
+    """lisää edut __edut listaan"""
     try:
       self.__edut.append(etu)
     except:
       pass
   
   def poista_etu(self, etu):
+    """poistaa edut __edut listasta"""
     try:
       self.__edut.pop(etu)
     except:
       pass
   
   def tulosta_edut(self):
+    """tulostaa asiakkaan edut"""
+
     print("tuotteen  " + self.tuotenimi + " edut ovat: ")
     for etu in self.__edut:
       print(etu)
