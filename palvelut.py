@@ -114,3 +114,27 @@ class Palvelu(Asiakas):
     print(f" tuotteen " + self.tuotenimi + " asiakkaat ovat: ")
     for Asiakas in self.__asiakkaat:
       print(self._luo_asiakasrivi(Asiakas))
+  
+class ParempiPalvelu(Palvelu):
+  
+  def __init__(self, tuotenimi):
+    """Konstruktori"""
+    super(ParempiPalvelu, self).__init__(tuotenimi)
+    self.__edut = []
+  
+  def lisaa_etu(self, etu):
+    try:
+      self.__edut.append(etu)
+    except:
+      pass
+  
+  def poista_etu(self, etu):
+    try:
+      self.__edut.pop(etu)
+    except:
+      pass
+  
+  def tulosta_edut(self):
+    print("tuotteen  " + self.tuotenimi + " edut ovat: ")
+    for etu in self.__edut:
+      print(etu)
