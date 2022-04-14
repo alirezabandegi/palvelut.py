@@ -61,3 +61,31 @@ class Asiakas:
     sijoittaa asikkaan numerot ja palauttaa niitä
     """
     return f'{Asiakas.__asiakasnumero[0]:02}-{Asiakas.__asiakasnumero[1]:03}-{Asiakas.__asiakasnumero[2]:03}'
+  
+class Palvelu(Asiakas):
+   
+  def __init__(self, tuotenimi):
+    """Konstruktori"""
+    self.tuotenimi = tuotenimi
+    self.__asiakkaat = []
+
+  def _luo_asiakasrivi(self, Asiakas):
+    return f"{self.set_nimi} ({self.set_numero}) on {self.set_ika}-vuotias."
+ 
+  def lisaa_asiakas(self, Asiakas):
+    try:
+      self.__asiakkaat.append(Asiakas)
+    except ValueError:
+      pass
+  
+  def poista_asiakas(self, Asiakas):
+    try:
+      self.__asiakkaat.pop(Asiakas)
+    except ValueError:
+        pass
+
+  def tulosta_asiakkaat(self):
+    print(f" tuotteen " + self.tuotenimi + " asiakkaat ovat: ")
+    for Asiakas in self.__asiakkaat:
+      print(self._luo_asiakasrivi(Asiakas))
+  
