@@ -28,3 +28,6 @@ class Asiakas:
       return Asiakas.__ika
     except ValueError:
       pass
+
+  def set_numero(self):
+    return f'{Asiakas.__asiakasnumero[0]:02}-{Asiakas.__asiakasnumero[1]:03}-{Asiakas.__asiakasnumero[2]:03}'
