@@ -1,7 +1,7 @@
 import random
 
 class Asiakas:
-
+  
   def __init__(self, nimi, ika):
     """Konstruktori"""
     self.__nimi = nimi
@@ -16,3 +16,15 @@ class Asiakas:
     number.append(random.randint(0, 999))
 
     return number
+  
+  def set_nimi(self):
+    try:
+      return Asiakas.__nimi
+    except ValueError:
+      pass
+  
+  def set_ika(self):
+    try:
+      return Asiakas.__ika
+    except ValueError:
+      pass
